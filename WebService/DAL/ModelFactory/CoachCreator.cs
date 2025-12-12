@@ -3,11 +3,11 @@ using System.Data;
 
 namespace WebService.DAL.ModelFactory
 {
-    public class CoachModelCreator : IModelCreator<Models.Coach>
+    public class CoachCreator : IModelCreator<Coach>
     {
         public Coach CreateModel(IDataReader src)
         {
-            Coach coach = new Coach();
+            Coach coach = new Coach()
             {
                 CoachId = Convert.ToInt16(src["CoachId"]),
                 CoachSecurityNum = Convert.ToInt16(src["CoachSecurityNum"]),

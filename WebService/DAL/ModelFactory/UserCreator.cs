@@ -3,7 +3,7 @@ using System.Data;
 
 namespace WebService.DAL.ModelFactory
 {
-    public class UserModelCreator : IModelCreator<User> 
+    public class UserCreator : IModelCreator<User> 
     {
         public User CreateModel(IDataReader src)  
         {
@@ -14,7 +14,7 @@ namespace WebService.DAL.ModelFactory
                 UserPassword = Convert.ToString(src["UserPassword"]),
                 CityId = Convert.ToInt16(src["CityId"]),   
                 Address = Convert.ToString(src["UserAddress"]),
-                PhoneNum = Convert.ToString(src["PhoneNum"])    
+                PhoneNum = Convert.ToString(src["PhoneNum"]),    
             };
             return user;  
         }

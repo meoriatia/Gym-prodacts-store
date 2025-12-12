@@ -8,5 +8,9 @@ namespace Models
 {
     internal class ProductPurchcase
     {
+        public int PurchaseId { get; set; }
+        public int ProductId { get; set; }
+        public int Price { get; set; }
+        public int Amount { get; set; }  
     }
 }

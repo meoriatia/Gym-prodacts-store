@@ -8,5 +8,10 @@ namespace Models
 {
     internal class Product
     {
+        public int ProductId { get; set; }
+        public string? ProductName { get; set; }
+        public string? ProductTypeId { get; set; }
+        public string? ProductPhoto { get; set; }
+        public bool Flavored { get; set; }  
     }
 }

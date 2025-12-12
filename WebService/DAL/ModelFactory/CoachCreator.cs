@@ -10,7 +10,7 @@ namespace WebService.DAL.ModelFactory
             Coach coach = new Coach()
             {
                 CoachId = Convert.ToInt16(src["CoachId"]),
-                CoachSecurityNum = Convert.ToInt16(src["CoachSecurityNum"]),
+                CoachSecurityNumber = Convert.ToInt16(src["CoachSecurityNumber"]),
                 CoachFirstName = Convert.ToString(src["CoachFirstName"]),
                 CoachPicture = Convert.ToString(src["CoachPicture"]),
                 CoachLastName = Convert.ToString(src["CoachLastName"]),

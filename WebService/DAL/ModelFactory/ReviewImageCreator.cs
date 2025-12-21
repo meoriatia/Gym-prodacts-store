@@ -11,7 +11,7 @@ namespace WebService.DAL.ModelFactory
             {
                 ReviewImageId = Convert.ToInt16(src["ReviewImageId"]),
                 ReviewId = Convert.ToInt16(src["ReviewId"]),
-                ImageName = Convert.ToString(src["ImageUrl"]),
+                ImageName = Convert.ToString(src["ImageName"]),
                 Description = Convert.ToString(src["Description"]),
             };
             return reviewImage;

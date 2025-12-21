@@ -38,7 +38,7 @@ namespace WebService.DAL.Repository
         public List<City> ReadAll()
         {
             List<City> values = new List<City>();
-            string sql = "SELECT city.* FROM city;";
+            string sql = "SELECT City.* FROM City;";
             using (IDataReader dataReader = this.dbContext.Read(sql))
             {
                 while (dataReader.Read())

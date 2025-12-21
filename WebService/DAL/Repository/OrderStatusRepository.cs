@@ -8,16 +8,16 @@ namespace WebService.DAL.Repository
     {
         public OrderStatusRepository(DbContext dbContext) : base(dbContext) { }
 
-        public bool Delete(int StatusId)
+        public bool Delete(int OrderStatusId)
         {
-            string sql = $"DELETE FROM OrderStatus WHERE StatusId=@StatusId";
-            this.AddParameters("StatusId", StatusId.ToString());
+            string sql = $"DELETE FROM OrderStatus WHERE OrderStatusId=@OrderStatusId";
+            this.AddParameters("OrderStatusId",OrderStatusId.ToString());
             return this.dbContext.Update(sql);
         }
 
         public bool Delete(OrderStatus model)
         {
-            return Delete(model.StatusId);
+            return Delete(model.OrderStatusId);
         }
 
         public bool Insert(OrderStatus model)
@@ -28,9 +28,9 @@ namespace WebService.DAL.Repository
 
         }
 
-        public OrderStatus Read(object StatusId)
+        public OrderStatus Read(object OrderStatusId)
         {
-            string sql = "SELECT OrderStatus.* FROM OrderStatus WHERE StatusId = @StatusId;";
+            string sql = "SELECT OrderStatus.* FROM OrderStatus WHERE OrderStatusId = @OrderStatusId;";
             using IDataReader dataReader = this.dbContext.Read(sql);
             return this.modelFactory.OrderStatusCreator.CreateModel(dataReader);
         }
@@ -51,8 +51,8 @@ namespace WebService.DAL.Repository
 
         public bool Update(OrderStatus model)
         {
-            string sql = $"UPDATE OrderStatus SET StatusName=@StatusName WHERE StatusId=@StatusId";
-            this.AddParameters("StatusId", model.StatusId.ToString());
+            string sql = $"UPDATE OrderStatus SET StatusName=@StatusName WHERE OrderStatusId=@OrderStatusId";
+            this.AddParameters("OrderStatusId", model.OrderStatusId.ToString());
             this.AddParameters("StatusName", model.StatusName);
             return this.dbContext.Update(sql);
         }

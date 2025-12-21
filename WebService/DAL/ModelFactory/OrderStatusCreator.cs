@@ -9,8 +9,8 @@ namespace WebService.DAL.ModelFactory
         {
             OrderStatus ordeostatus = new OrderStatus()
             {
-                StatusId = Convert.ToInt16(src["OrderStatusId"]),
-                StatusName = Convert.ToString(src["OrderStatusName"]),
+                OrderStatusId = Convert.ToInt16(src["OrderStatusId"]),
+                StatusName = Convert.ToString(src["StatusName"]),
             };
             return orderStatus;
         }   

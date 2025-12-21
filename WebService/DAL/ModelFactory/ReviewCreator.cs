@@ -10,11 +10,10 @@ namespace WebService.DAL.ModelFactory
             Review review = new Review()
             {
                 ReviewId = Convert.ToInt16(src["ReviewId"]),
-                Description = Convert.ToString(src["ProductId"]),
+                Description = Convert.ToString(src["Description"]),
                 UserId = Convert.ToInt16(src["UserId"]),
                 Rating = Convert.ToInt16(src["Rating"]),
-                Comment = Convert.ToString(src["Comment"]),
-                Title = Convert.ToString(src["ReviewDate"]),
+                Title = Convert.ToString(src["Title"]),
             };
             return review;
         }

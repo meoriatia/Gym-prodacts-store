@@ -22,8 +22,8 @@ namespace WebService.DAL.Repository
 
         public bool Insert(Purchase model)
         {
-            string sql = $"INSERT INTO Purchase(UserId,ProductId,ReciptNumber,PurchaseDate,PurchaseId) values(@UserId,@ProductId,@ReciptNumber,@PurchaseDate,@PurchaseId)";
-            this.AddParameters("UserId,ProductId,ReciptNumber,PurchaseDate,PurchaseId", model.UserId, ProductId, ReciptNumber, PurchaseDate, PurchaseId);
+            string sql = $"INSERT INTO Purchase(UserId,ProductId,ReciptNumber,PurchaseDate,StatusId) values(@UserId,@ProductId,@ReciptNumber,@PurchaseDate,@StatusId)";
+            this.AddParameters("UserId,ProductId,ReciptNumber,PurchaseDate,StatusId", model.UserId, ProductId, ReciptNumber, PurchaseDate, StatusId);
             return this.dbContext.Update(sql);
 
         }
@@ -51,9 +51,9 @@ namespace WebService.DAL.Repository
 
         public bool Update(Purchase model)
         {
-            string sql = $"UPDATE Purchase SET UserId=@UserId,ProductId=@ProductId,ReciptNumber=@ReciptNumber,PurchaseDate=@PurchaseDate,PurchaseId=PurchaseId WHERE StatusId=@StatusId";
+            string sql = $"UPDATE Purchase SET UserId=@UserId,ProductId=@ProductId,ReciptNumber=@ReciptNumber,PurchaseDate=@PurchaseDate,StatusId=StatusId WHERE PurchaseId=@PurchaseId";
             this.AddParameters("PurchaseId", model.PurchaseId.ToString());
-            this.AddParameters("UserId,ProductId,ReciptNumber,PurchaseDate,PurchaseId", model.UserId, ProductId, ReciptNumber, PurchaseDate, PurchaseId);
+            this.AddParameters("UserId,ProductId,ReciptNumber,PurchaseDate,StatusId", model.UserId, ProductId, ReciptNumber, PurchaseDate, StatusId);
             return this.dbContext.Update(sql);
         }
     }

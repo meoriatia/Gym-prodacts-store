@@ -9,10 +9,10 @@ namespace WebService.DAL.ModelFactory
         {
             ProductPurchase productPurchase = new ProductPurchase()  
             {
-                PurchaseId = Convert.ToInt16(src["ProductPurchaseId"]),
+                PurchaseId = Convert.ToInt16(src["PurchaseId"]),
                 ProductId = Convert.ToInt16(src["ProductId"]),
-                Price = Convert.ToInt16(src["PurchaseId"]),
-                Amount = Convert.ToInt16(src["Quantity"]),
+                Price = Convert.ToInt16(src["Price"]),
+                Amount = Convert.ToInt16(src["Amount"]),
             };
             return productPurchase;
         }

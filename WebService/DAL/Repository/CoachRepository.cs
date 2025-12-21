@@ -17,7 +17,7 @@ namespace WebService.DAL.Repository
 
         public bool Delete(City model)
         {
-            return Delete(model.CityId);
+            return Delete(model.CoachId);
         }
 
 
@@ -32,7 +32,7 @@ namespace WebService.DAL.Repository
 
         public Coach Read(object CoachId)
         {
-            string sql = "SELECT coach.* FROM coach WHERE coachId = @coachId;";
+            string sql = "SELECT Coach.* FROM Coach WHERE CoachId = @CoachId;";
             using IDataReader dataReader = this.dbContext.Read(sql);
             return this.modelFactory.CoachCreator.CreateModel(dataReader);
         }
@@ -40,7 +40,7 @@ namespace WebService.DAL.Repository
         public List<Coach> ReadAll()
         {
             List<Coach> values = new List<Coach>();
-            string sql = "SELECT coach.* FROM coach;";
+            string sql = "SELECT Coach.* FROM Coach;";
             using (IDataReader dataReader = this.dbContext.Read(sql))
             {
                 while (dataReader.Read())
@@ -53,8 +53,8 @@ namespace WebService.DAL.Repository
 
         public bool Update(Coach model)
         {
-            string sql = "UPDATE Coach SET CoachFirstName=@CoachFirstName,CoachSecurityNumber=@CoachSecurityNumber,CoachLastName=@CoachLastName WHERE Coach Id=@CoachId";
-            this.AddParameters("CoachId", model.Id.ToString());
+            string sql = "UPDATE Coach SET CoachFirstName=@CoachFirstName,CoachSecurityNumber=@CoachSecurityNumber,CoachPicture=@CoachPicture,CoachLastName=@CoachLastName WHERE Coach Id=@CoachId";
+            this.AddParameters("CoachId", model.CoachId.ToString());
             this.AddParameters("CoachSecurityNum, CoachFirstName, CoachPicture, CoachLastName", model.CoachSecurityNum, CoachFirstName, CoachPicture, CoachLastName);
             return this.dbContext.Update(sql);
         }

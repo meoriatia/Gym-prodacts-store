@@ -12,9 +12,9 @@ namespace WebService.DAL.ModelFactory
                 ProductId = Convert.ToInt16(src["ProductId"]),
                 ProductPrice = convert.ToInt(src["ProcuctPrice"]),
                 ProductName = Convert.ToString(src["ProductName"]),
-                Flavored = Convert.ToBoolean(src["Price"]),
-                ProductTypeId = Convert.ToInt16(src["StockQuantity"]),
-                ProductPhoto = Convert.ToString(src["CategoryId"]),
+                Flavored = Convert.ToBoolean(src["Flavored"]),
+                ProductTypeId = Convert.ToInt16(src["ProductTypeId"]),
+                ProductPhoto = Convert.ToString(src["ProductPhoto"]),
             };
             return product;
         }

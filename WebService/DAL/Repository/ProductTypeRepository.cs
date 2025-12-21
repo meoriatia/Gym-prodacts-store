@@ -51,9 +51,9 @@ namespace WebService.DAL.Repository
 
         public bool Update(ProductType model)
         {
-            string sql = $"UPDATE Purchase SET UserId=@UserId,ProductId=@ProductId,ReciptNumber=@ReciptNumber,PurchaseDate=@PurchaseDate,PurchaseId=@PurchaseId,ProductPrice=@ProductPrice WHERE ProductId=@ProductId";
-            this.AddParameters("ProductId", model.ProductId.ToString());
-            this.AddParameters("UserId,ProductId,ReciptNumber,PurchaseDate,PurchaseId,ProductPrice", model.UserId, ProductId, ReciptNumber, PurchaseDate, PurchaseId, ProductPrice);
+            string sql = $"UPDATE ProductType SET ProductTypeName=@ProductTypeName WHERE ProductTypeId=@ProductTypeId";
+            this.AddParameters("ProductTypeId", model.ProductTypeId.ToString());
+            this.AddParameters("ProductTypeName", model.ProductTypeName);
             return this.dbContext.Update(sql);
         }
     }

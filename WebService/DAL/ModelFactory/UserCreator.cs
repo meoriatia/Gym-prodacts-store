@@ -9,11 +9,11 @@ namespace WebService.DAL.ModelFactory
         {
             User user = new User()  
             {
-                UserId = Convert.ToInt16(src["car_company_id"]),
-                UserFirstName = Convert.ToString(src["Name"]),
+                UserId = Convert.ToInt16(src["UserId"]),
+                UserFirstName = Convert.ToString(src["UserFirstName"]),
                 UserPassword = Convert.ToString(src["UserPassword"]),
                 CityId = Convert.ToInt16(src["CityId"]),   
-                Address = Convert.ToString(src["UserAddress"]),
+                Address = Convert.ToString(src["Address"]),
                 PhoneNum = Convert.ToString(src["PhoneNum"]),    
             };
             return user;  

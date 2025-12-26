@@ -1,7 +1,7 @@
 ﻿using Models;
 using System.Data;
 
-namespace WebService.DAL.ModelFactory
+namespace WebService.DAL
 {
     public class PurchaseCreator : IModelCreator<Purchase>
 
@@ -12,8 +12,6 @@ namespace WebService.DAL.ModelFactory
             {
                 PurchaseId = Convert.ToInt16(src["PurchaseId"]),
                 UserId = Convert.ToInt16(src["UserId"]),
-                ProductId = Convert.ToInt16(src["ProductId"]),
-                ReciptNumber = Convert.ToInt16(src["ReciptNumber"]),
                 PurchaseDate = Convert.ToDateTime(src["PurchaseDate"]),
                 StatusId = Convert.ToInt16(src["StatusId"]),
             };

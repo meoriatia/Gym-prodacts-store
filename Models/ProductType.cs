@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    internal class ProductType
+    public class ProductType
     {
         public int ProductTypeId { get; set; }
         public string? ProductTypeName { get; set; }

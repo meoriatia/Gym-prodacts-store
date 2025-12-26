@@ -26,7 +26,7 @@ namespace WebService
             // הגדרת נתיב החיבור למסד הנתונים
             connection = new OleDbConnection
             {
-                ConnectionString = $@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={Directory.GetCurrentDirectory()}/App_Data/Database2.accdb"
+                ConnectionString = $@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={Directory.GetCurrentDirectory()}/App_Data/Database.accdb"
             };
 
             // יצירת אובייקט הפקודה (command) לחיבור למסד הנתונים

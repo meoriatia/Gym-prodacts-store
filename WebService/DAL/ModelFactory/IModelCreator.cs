@@ -1,6 +1,6 @@
 ﻿using System.Data;
 
-namespace WebService.DAL.ModelFactory  // מגדיר מרחב שם
+namespace WebService.DAL  // מגדיר מרחב שם
 {
     public interface IModelCreator<T>  // ממשק שמגדיר פונקציה ליצירת מודל מסוג T
     {

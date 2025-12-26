@@ -23,7 +23,10 @@ namespace WebService.DAL.Repository
         public bool Insert(Review model)
         {
             string sql = $"INSERT INTO Review(UserId,Title,Description,Rating) values(@UserId,@Title,@Description,@Rating)";
-            this.AddParameters("UserId,Title,Description,Rating", model.UserId, Title, Description, Rating);
+            this.AddParameters("UserId", model.UserId.ToString());
+            this.AddParameters("Title", model.Title);
+            this.AddParameters("Description", model.Description);
+            this.AddParameters("Rating", model.Rating.ToString());
             return this.dbContext.Update(sql);
 
         }
@@ -53,7 +56,10 @@ namespace WebService.DAL.Repository
         {
             string sql = $"UPDATE Review SET UserId=@UserId,Title=@Title,Description=@Description,Rating=@Rating WHERE ReviewId=@ReviewId";
             this.AddParameters("ReviewId", model.ReviewId.ToString());
-            this.AddParameters("UserId,Title,Description,Rating", model.UserId,Title,Description,Rating);
+            this.AddParameters("UserId", model.UserId.ToString());
+            this.AddParameters("Title", model.Title);
+            this.AddParameters("Description", model.Description);
+            this.AddParameters("Rating", model.Rating.ToString());
             return this.dbContext.Update(sql);
         }
     }

@@ -23,7 +23,9 @@ namespace WebService.DAL.Repository
         public bool Insert(ReviewImage model)
         {
             string sql = $"INSERT INTO ReviewImage(ReviewId,ImageName,Description) values(@ReviewId,@ImageName,@Description)";
-            this.AddParameters("ReviewId,ImageName,Description", model.ReviewId, ImageName, Description);
+            this.AddParameters("ReviewId", model.ReviewId.ToString());
+            this.AddParameters("ImageName", model.ImageName);
+            this.AddParameters("Description", model.Description);
             return this.dbContext.Update(sql);
 
         }
@@ -53,7 +55,9 @@ namespace WebService.DAL.Repository
         {
             string sql = $"UPDATE ReviewImage SET ReviewId=@ReviewId, ImageName=@ImageName, Description=@Description WHERE ReviewImageId=@ReviewImageId";
             this.AddParameters("ReviewImageId", model.ReviewImageId.ToString());
-            this.AddParameters("ReviewId, ImageName, Description", model.ReviewId, ImageName, Description);
+            this.AddParameters("ReviewId", model.ReviewId.ToString());
+            this.AddParameters("ImageName", model.ImageName);
+            this.AddParameters("Description", model.Description);
             return this.dbContext.Update(sql);
         }
     }

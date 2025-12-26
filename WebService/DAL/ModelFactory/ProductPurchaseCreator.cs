@@ -1,13 +1,13 @@
 ﻿using Models;
 using System.Data;
 
-namespace WebService.DAL.ModelFactory
+namespace WebService.DAL
 {
-    public class ProductPurchaseCreator : IModelCreator<ProductPurchase>    
+    public class ProductPurchaseCreator : IModelCreator<ProductPurchcase>    
     {
-        public ProductPurchase CreateModel(IDataReader src)  
+        public ProductPurchcase CreateModel(IDataReader src)  
         {
-            ProductPurchase productPurchase = new ProductPurchase()  
+            ProductPurchcase productPurchase = new ProductPurchcase()  
             {
                 PurchaseId = Convert.ToInt16(src["PurchaseId"]),
                 ProductId = Convert.ToInt16(src["ProductId"]),

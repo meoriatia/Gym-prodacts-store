@@ -1,7 +1,7 @@
 ﻿using Models;
 using System.Data;
 
-namespace WebService.DAL.ModelFactory
+namespace WebService.DAL
 {
     public class CoachCreator : IModelCreator<Coach>
     {
@@ -10,7 +10,7 @@ namespace WebService.DAL.ModelFactory
             Coach coach = new Coach()
             {
                 CoachId = Convert.ToInt16(src["CoachId"]),
-                CoachSecurityNumber = Convert.ToInt16(src["CoachSecurityNumber"]),
+                CoachSecurityNum = Convert.ToInt16(src["CoachSecurityNumber"]),
                 CoachFirstName = Convert.ToString(src["CoachFirstName"]),
                 CoachPicture = Convert.ToString(src["CoachPicture"]),
                 CoachLastName = Convert.ToString(src["CoachLastName"]),

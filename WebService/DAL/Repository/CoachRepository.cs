@@ -4,9 +4,9 @@ using Models;
 
 namespace WebService.DAL.Repository
 {
-    public class CoachRepository : Repository , IRepository<coach>
+    public class CoachRepository : Repository , IRepository<Coach>
     {
-        public CityRepository(DbContext dbContext) : base(dbContext) { }
+        public CoachRepository(DbContext dbContext) : base(dbContext) { }
 
         public bool Delete(int CoachId)
         {
@@ -15,7 +15,7 @@ namespace WebService.DAL.Repository
             return this.dbContext.Update(sql);
         }
 
-        public bool Delete(City model)
+        public bool Delete(Coach model)
         {
             return Delete(model.CoachId);
         }
@@ -24,7 +24,10 @@ namespace WebService.DAL.Repository
         public bool Insert(Coach model)
         {
             string sql = $"INSERT INTO Coach(CoachSecurityNum,CoachFirstName,CoachPicture,CoachLastName) values(@CoachSecurityNumber,@CoachFirstName,@CoachPicture,@coachLastName)";
-            this.AddParameters("CoachSecurityNum,CoachFirstName,CoachPicture,CoachLastName", model.CoachSecurityNum, CoachFirstName, CoachPicture, CoachLastName);
+            this.AddParameters("CoachSecurityNum", model.CoachSecurityNum.ToString());
+            this.AddParameters("CoachFirstName", model.CoachFirstName);
+            this.AddParameters("CoachPicture", model.CoachPicture);
+            this.AddParameters("CoachLastName", model.CoachLastName);
             return this.dbContext.Update(sql);
 
         }
@@ -55,7 +58,10 @@ namespace WebService.DAL.Repository
         {
             string sql = "UPDATE Coach SET CoachFirstName=@CoachFirstName,CoachSecurityNumber=@CoachSecurityNumber,CoachPicture=@CoachPicture,CoachLastName=@CoachLastName WHERE Coach Id=@CoachId";
             this.AddParameters("CoachId", model.CoachId.ToString());
-            this.AddParameters("CoachSecurityNum, CoachFirstName, CoachPicture, CoachLastName", model.CoachSecurityNum, CoachFirstName, CoachPicture, CoachLastName);
+            this.AddParameters("CoachSecurityNum", model.CoachSecurityNum.ToString());
+            this.AddParameters("CoachFirstName", model.CoachFirstName);
+            this.AddParameters("CoachPicture", model.CoachPicture);
+            this.AddParameters("CoachLastName", model.CoachLastName);
             return this.dbContext.Update(sql);
         }
     }

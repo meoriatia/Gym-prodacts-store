@@ -1,7 +1,7 @@
 ﻿using Models;
 using System.Data;
 
-namespace WebService.DAL.ModelFactory
+namespace WebService.DAL
 {
     public class ProductCreator : IModelCreator<Product>
     {
@@ -10,7 +10,7 @@ namespace WebService.DAL.ModelFactory
             Product product = new Product()
             {
                 ProductId = Convert.ToInt16(src["ProductId"]),
-                ProductPrice = convert.ToInt(src["ProcuctPrice"]),
+                Price = Convert.ToInt16(src["Price"]),
                 ProductName = Convert.ToString(src["ProductName"]),
                 Flavored = Convert.ToBoolean(src["Flavored"]),
                 ProductTypeId = Convert.ToInt16(src["ProductTypeId"]),

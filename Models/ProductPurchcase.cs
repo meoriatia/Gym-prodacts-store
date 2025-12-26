@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    internal class ProductPurchcase
+    public class ProductPurchcase
     {
         public int PurchaseId { get; set; }
         public int ProductId { get; set; }

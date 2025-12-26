@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    internal class ReviewImage
+    public class ReviewImage
     {
         public int ReviewImageId { get; set; }
         public int ReviewId { get; set; }

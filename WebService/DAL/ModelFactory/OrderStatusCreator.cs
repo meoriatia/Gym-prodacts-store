@@ -1,15 +1,15 @@
 ﻿using Models;
 using System.Data;
 
-namespace WebService.DAL.ModelFactory
+namespace WebService.DAL
 {
-    public class OrderStatusCreator : IModelCreator<Status>
+    public class OrderStatusCreator : IModelCreator<OrderStatus>
     {
         public OrderStatus CreateModel(IDataReader src)
         {
-            OrderStatus ordeostatus = new OrderStatus()
+            OrderStatus orderStatus = new OrderStatus()
             {
-                OrderStatusId = Convert.ToInt16(src["OrderStatusId"]),
+                StatusId = Convert.ToInt16(src["OrderStatusId"]),
                 StatusName = Convert.ToString(src["StatusName"]),
             };
             return orderStatus;

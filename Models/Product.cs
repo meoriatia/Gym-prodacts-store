@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    internal class Product
+    public class Product
     {
         public int ProductId { get; set; }
         public string? ProductName { get; set; }
-        public string? ProductTypeId { get; set; }
+        public int Price { get; set; }
+        public int ProductTypeId { get; set; }
         public string? ProductPhoto { get; set; }
         public bool Flavored { get; set; }  
     }

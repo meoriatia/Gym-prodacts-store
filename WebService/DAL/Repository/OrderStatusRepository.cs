@@ -17,7 +17,7 @@ namespace WebService.DAL.Repository
 
         public bool Delete(OrderStatus model)
         {
-            return Delete(model.OrderStatusId);
+            return Delete(model.StatusId);
         }
 
         public bool Insert(OrderStatus model)
@@ -51,8 +51,8 @@ namespace WebService.DAL.Repository
 
         public bool Update(OrderStatus model)
         {
-            string sql = $"UPDATE OrderStatus SET StatusName=@StatusName WHERE OrderStatusId=@OrderStatusId";
-            this.AddParameters("OrderStatusId", model.OrderStatusId.ToString());
+            string sql = $"UPDATE OrderStatus SET StatusName=@StatusName WHERE StatusId=@StatusId";
+            this.AddParameters("StatusId", model.StatusId.ToString());
             this.AddParameters("StatusName", model.StatusName);
             return this.dbContext.Update(sql);
         }

@@ -1,9 +1,9 @@
 ﻿using Models;
 using System.Data;
 
-namespace WebService.DAL.ModelFactory
+namespace WebService.DAL
 {
-    public class ProductTypeCreator : IModelCreator<ProductTypeCreator>
+    public class ProductTypeCreator : IModelCreator<ProductType>
     {
         public ProductType CreateModel(IDataReader src)
         {

@@ -1,5 +1,5 @@
 ﻿using System.Data.OleDb;
-using WebService.DAL.ModelCreator;
+using WebService.DAL;
 
 namespace WebService.DAL.Repository
 {

@@ -4,7 +4,7 @@ using Models;
 
 namespace WebService.DAL.Repository
 {
-    public class PurchaseRepository : Repository, IRepository<Puarchase>
+    public class PurchaseRepository : Repository, IRepository<Purchase>
     {
         public PurchaseRepository(DbContext dbContext) : base(dbContext) { }
 
@@ -22,8 +22,10 @@ namespace WebService.DAL.Repository
 
         public bool Insert(Purchase model)
         {
-            string sql = $"INSERT INTO Purchase(UserId,ProductId,ReciptNumber,PurchaseDate,StatusId) values(@UserId,@ProductId,@ReciptNumber,@PurchaseDate,@StatusId)";
-            this.AddParameters("UserId,ProductId,ReciptNumber,PurchaseDate,StatusId", model.UserId, ProductId, ReciptNumber, PurchaseDate, StatusId);
+            string sql = $"INSERT INTO Purchase(UserId,PurchaseDate,StatusId) values(@UserId,@PurchaseDate,@StatusId)";
+            this.AddParameters("UserId", model.UserId.ToString());
+            this.AddParameters("ReciptNumber", model.PurchaseDate.ToString());
+            this.AddParameters("StatusId", model.StatusId.ToString());
             return this.dbContext.Update(sql);
 
         }
@@ -53,7 +55,9 @@ namespace WebService.DAL.Repository
         {
             string sql = $"UPDATE Purchase SET UserId=@UserId,ProductId=@ProductId,ReciptNumber=@ReciptNumber,PurchaseDate=@PurchaseDate,StatusId=StatusId WHERE PurchaseId=@PurchaseId";
             this.AddParameters("PurchaseId", model.PurchaseId.ToString());
-            this.AddParameters("UserId,ProductId,ReciptNumber,PurchaseDate,StatusId", model.UserId, ProductId, ReciptNumber, PurchaseDate, StatusId);
+            this.AddParameters("UserId", model.UserId.ToString());
+            this.AddParameters("ReciptNumber", model.PurchaseDate.ToString());
+            this.AddParameters("StatusId", model.StatusId.ToString());
             return this.dbContext.Update(sql);
         }
     }

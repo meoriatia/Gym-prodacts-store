@@ -4,7 +4,7 @@ using Models;
 
 namespace WebService.DAL.Repository
 {
-    public class CityRepository : Repository, IRepository <city>
+    public class CityRepository : Repository, IRepository<City>
     {
         public CityRepository(DbContext dbContext) : base(dbContext) { }
 

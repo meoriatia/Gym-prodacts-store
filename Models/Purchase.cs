@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    internal class Purchase
+    public class Purchase
     {
         public int PurchaseId { get; set; }
         public DateTime PurchaseDate { get; set; }

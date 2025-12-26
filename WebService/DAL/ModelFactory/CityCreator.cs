@@ -1,7 +1,7 @@
 ﻿using Models;
 using System.Data;
 
-namespace WebService.DAL.ModelFactory
+namespace WebService.DAL
 {
     public class CityCreator : IModelCreator<City>
     {

@@ -23,12 +23,15 @@ namespace WebService.DAL.Repository
         public bool Insert(User model)
         {
             string sql = $"INSERT INTO User(UserFirstName,UserPassword,CityId,Address,PhoneNum) values(@UserFirstName,@UserPassword,@CityId,@Address,@PhoneNum)";
-            this.AddParameters("UserFirstName,UserPassword,CityId,Address,PhoneNum", model.UserFirstName, UserPassword, CityId, Address, PhoneNum);
+            this.AddParameters("UserFirstName", model.UserFirstName);
+            this.AddParameters("CityId", model.CityId.ToString());
+            this.AddParameters("Address", model.Address);
+            this.AddParameters("PhoneNum", model.PhoneNum);
             return this.dbContext.Update(sql);
 
         }
 
-        public Review Read(object UserId)
+        public User Read(object UserId)
         {
             string sql = "SELECT User.* FROM User WHERE UserId = @UserId;";
             using IDataReader dataReader = this.dbContext.Read(sql);
@@ -53,7 +56,10 @@ namespace WebService.DAL.Repository
         {
             string sql = $"UPDATE User SET UserFirstName=@UserFirstName,UserPassword=@UserPassword,CityId=@CityId,Address=@Address,PhoneNum=@PhoneNum WHERE UserId=@UserId";
             this.AddParameters("UserId", model.UserId.ToString());
-            this.AddParameters("UserFirstName,UserPassword,CityId,Address,PhoneNum", model.UserFirstName, UserPassword, CityId, Address, PhoneNum);
+            this.AddParameters("UserFirstName", model.UserFirstName);
+            this.AddParameters("CityId", model.CityId.ToString());
+            this.AddParameters("Address", model.Address);
+            this.AddParameters("PhoneNum", model.PhoneNum);
             return this.dbContext.Update(sql);
         }
     }

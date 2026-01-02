@@ -10,7 +10,7 @@ namespace WebService.DAL
             Product product = new Product()
             {
                 ProductId = Convert.ToInt16(src["ProductId"]),
-                Price = Convert.ToInt16(src["Price"]),
+                Price = Convert.ToInt16(src["ProductPrice"]),
                 ProductName = Convert.ToString(src["ProductName"]),
                 Flavored = Convert.ToBoolean(src["Flavored"]),
                 ProductTypeId = Convert.ToInt16(src["ProductTypeId"]),

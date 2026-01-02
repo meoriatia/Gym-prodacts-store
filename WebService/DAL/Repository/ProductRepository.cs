@@ -55,7 +55,7 @@ namespace WebService.DAL.Repository
 
         public bool Update(Product model)
         {
-            string sql = $"UPDATE Product SET ProductName=@ProductName,Flavored=@Flavored,ProductTypeId=@ProductTypeId,ProductPhoto=@ProductPhoto,Price=@Price WHERE ProductId=@ProductId";
+            string sql = $"UPDATE Product SET ProductName=@ProductName,Flavored=@Flavored,ProductTypeId=@ProductTypeId,ProductPhoto=@ProductPhoto,ProductPrice=@ProductPrice WHERE ProductId=@ProductId";
             this.AddParameters("ProductName", model.ProductName);
             this.AddParameters("Flavored", model.Flavored.ToString());
             this.AddParameters("ProductTypeId", model.ProductTypeId.ToString());

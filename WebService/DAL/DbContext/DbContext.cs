@@ -98,7 +98,7 @@ namespace WebService
             ClearParameters();
             return ok;
         }
-        public void AddParameter(string paramName, string value)
+        public void AddParameter(string paramName, object value)
         {
             this.command.Parameters.Add(new OleDbParameter(paramName, value));
         }

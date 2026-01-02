@@ -1,6 +1,8 @@
-﻿using System.Data;
+﻿using Models;
+using System.Data;
 using System.Data.Common;
-using Models;
+using System.Diagnostics.Eventing.Reader;
+using System.Reflection;
 
 namespace WebService.DAL.Repository
 {
@@ -62,6 +64,95 @@ namespace WebService.DAL.Repository
             this.AddParameters("ProductPhoto", model.ProductPhoto);
             this.AddParameters("ProductPrice", model.Price.ToString());
             return this.dbContext.Update(sql);
+        }
+
+        internal List<Product> ReadByRaiting(int usersRaitings, int minPrice, int maxPrice)
+        {
+            List<Product> values = new List<Product>();
+            string sql = "";
+            if(usersRaitings == 0 && minPrice == 0 && maxPrice == 0)
+            {
+               return this.ReadAll();
+            }
+            else if (usersRaitings!=0 && minPrice==0 && maxPrice==0)
+            {
+             sql = @"SELECT Product.ProductId, Product.ProductName, Product.ProductTypeId, Product.ProductPhoto, Product.Flavored, Product.ProductPrice, Product.BrandId, Review.Rating
+                          FROM Product INNER JOIN Review ON Product.ProductId = Review.ProductId
+                          WHERE Review.Rating>@UsersRaitings";
+            this.AddParameters("UsersRaitings", usersRaitings);
+            }
+            else if(usersRaitings != 0 && minPrice != 0 && maxPrice!= 0)
+            {
+                sql = @"SELECT Product.ProductId, Product.ProductName, Product.ProductTypeId, Product.ProductPhoto, Product.Flavored, Product.ProductPrice, Product.BrandId, Review.Rating
+                        FROM Product INNER JOIN Review ON Product.ProductId = Review.ProductId
+                        WHERE Product.ProductPrice)>@UsersRaitings AND Review.Rating>@MinPrice";
+                this.AddParameters("@UsersRaitings", usersRaitings);
+                this.AddParameters("@MinPrice", minPrice);
+            }
+            else if (usersRaitings != 0 && minPrice != 0 && maxPrice == 0)
+            {
+                sql = @"SELECT Product.ProductId, Product.ProductName, Product.ProductTypeId, Product.ProductPhoto, Product.Flavored, Product.ProductPrice, Product.BrandId, Review.Rating
+                        FROM Product INNER JOIN Review ON Product.ProductId = Review.ProductId
+                        WHERE Product.ProductPrice>@ProductPrice AND Review.Rating>@Rating;
+ ";
+                this.AddParameters("@ProductPrice", minPrice);
+                this.AddParameters("@Rating", usersRaitings);
+            }
+            else if (usersRaitings != 0 && minPrice != 0 && maxPrice != 0)
+            {
+                sql = @"SELECT Product.ProductId, Product.ProductName, Product.ProductTypeId, Product.ProductPhoto, Product.Flavored, Product.ProductPrice, Product.BrandId, Review.Rating
+                        FROM Product INNER JOIN Review ON Product.ProductId = Review.ProductId
+                        WHERE Product.ProductPrice>@ProductPrice AND Product.ProductPrice<@MaxProductPrice  AND Review.Rating>@Rating;
+ ";
+                this.AddParameters("@ProductPrice", minPrice);
+                this.AddParameters("@MaxProductPrice", maxPrice);
+                this.AddParameters("@Rating", usersRaitings);
+            }
+            else if (usersRaitings == 0 && minPrice != 0 && maxPrice != 0)
+            {
+                sql = @"SELECT Product.ProductId, Product.ProductName, Product.ProductTypeId, Product.ProductPhoto, Product.Flavored, Product.ProductPrice, Product.BrandId, Review.Rating
+                        FROM Product INNER JOIN Review ON Product.ProductId = Review.ProductId
+                        WHERE Product.ProductPrice>@ProductPrice AND Product.ProductPrice<@MaxProductPrice;
+ ";
+                this.AddParameters("@ProductPrice", minPrice);
+                this.AddParameters("@MaxProductPrice", maxPrice);
+            }
+            else if (usersRaitings == 0 && minPrice == 0 && maxPrice != 0)
+            {
+                sql = @"SELECT Product.ProductId, Product.ProductName, Product.ProductTypeId, Product.ProductPhoto, Product.Flavored, Product.ProductPrice, Product.BrandId, Review.Rating
+                        FROM Product INNER JOIN Review ON Product.ProductId = Review.ProductId
+                        WHERE  Product.ProductPrice<@MaxProductPrice";
+                this.AddParameters("@MaxProductPrice", maxPrice);
+            }
+
+            using (IDataReader dataReader = this.dbContext.Read(sql))
+                {
+                    while (dataReader.Read())
+                    {
+                        values.Add(this.modelFactory.ProductCreator.CreateModel(dataReader));
+                    }
+                    return values;
+                }
+
+        }
+
+        internal List<Product> ReadByRaitingAndPrice(int usersRaitings, int minPrice, int maxPrice)
+        {
+            List<Product> values = new List<Product>();
+            string sql = @"SELECT Product.ProductId, Product.ProductName,
+                                  Product.ProductTypeId, Product.ProductPhoto,
+                                  Product.Flavored, Product.ProductPrice, Product.BrandId, Review.Rating
+                          FROM Product INNER JOIN Review ON Product.ProductId = Review.ProductId
+                          WHERE Review.Rating>@UsersRaitings";
+            this.AddParameters("UsersRaitings", usersRaitings);
+            using (IDataReader dataReader = this.dbContext.Read(sql))
+            {
+                while (dataReader.Read())
+                {
+                    values.Add(this.modelFactory.ProductCreator.CreateModel(dataReader));
+                }
+                return values;
+            }
         }
     }
 }

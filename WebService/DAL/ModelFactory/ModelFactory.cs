@@ -14,7 +14,8 @@ namespace WebService.DAL
         ReviewCreator? reviewCreator;
         ReviewImageCreator? reviewImageCreator;
         UserCreator? userCreator;
-
+        BrandCreator? brandCreator;
+        MaterialCreator? materialCreator;
         public CityCreator CityCreator
         {
             get
@@ -130,6 +131,28 @@ namespace WebService.DAL
                     this.userCreator = new UserCreator();
                 }
                 return userCreator;
+            }
+        }
+        public BrandCreator BrandCreator
+        {
+            get
+            {
+                if (this.brandCreator == null)
+                {
+                    this.brandCreator = new BrandCreator();
+                }
+                return brandCreator;
+            }
+        }
+        public MaterialCreator MaterialCreator
+        {
+            get
+            {
+                if (materialCreator == null)
+                {
+                    this.materialCreator = new MaterialCreator();
+                }
+                return materialCreator;
             }
         }
     }

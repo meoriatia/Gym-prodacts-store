@@ -14,7 +14,7 @@ namespace WebService.DAL.Repository
             this.modelFactory = new ModelFactory();
         }
 
-        protected void AddParameters(string paramName, string paramValue)
+        protected void AddParameters(string paramName, object paramValue)
         {
             this.dbContext.AddParameter(paramName, paramValue);
         }

@@ -17,6 +17,8 @@ namespace WebService.DAL.Repository
         ReviewImageRepository? reviewImageRepository;
         ReviewRepository? reviewRepository;
         UserRepository? userRepository;
+        MaterialRepository? materialRepository;
+        BrandRepository? brandRepository;
 
         private readonly DbContext dbContext;
         public UnitOfWork(DbContext dbContext)
@@ -130,6 +132,28 @@ namespace WebService.DAL.Repository
                     this.userRepository = new UserRepository(dbContext);
                 }
                 return userRepository;
+            }
+        }
+        public MaterialRepository MaterialRepository
+        {
+            get
+            {
+                if (this.materialRepository == null)
+                {
+                    this.materialRepository = new MaterialRepository(dbContext);
+                }
+                return materialRepository;
+            }
+        }
+        public BrandRepository BrandRepository
+        {
+            get
+            {
+                if (brandRepository == null)
+                {
+                    this.brandRepository = new BrandRepository(dbContext);
+                }
+                return brandRepository;
             }
         }
     }
